@@ -1,0 +1,696 @@
+{% extends 'layout.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %} Input | Update Servey Data {% endblock %}
+
+{% block body %}
+
+                <section>
+					<div class="section-body">
+						<div class="row">
+
+							<!-- BEGIN  - FORM -->
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-head style-primary">
+										<header>Survey Information</header>
+										<div class="tools">
+											<a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
+											<a class="btn btn-icon-toggle btn-close"><i class="md md-close"></i></a>
+										</div>
+									</div>
+									<div class="card-body">
+
+										<form class="form" role="form" action="" method="post"> {% csrf_token %}
+
+											<div class="row">
+													
+												<div class="col-sm-4">
+													<div class="form-group floating-label">
+															{{ base_form.uniqueid| add_class:'form-control' }}
+														<label for="regular2">Unique ID</label>
+													</div>																										
+													<div class="form-group floating-label">
+															{{ base_form.sheltername| add_class:'form-control' }}
+														<label for="regular2">1.i. Name of DS</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.schoolid| add_class:'form-control' }}
+														<label for="regular2">1.ii. School or DS ID</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.district| add_class:'form-control' }}
+														<label for="regular2">District</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.upazilla| add_class:'form-control' }}
+														<label for="regular2">1.iii. Upazilla</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.mouza| add_class:'form-control' }}
+														<label for="regular2">1.iv. Mouza</label>
+													</div>													
+													<div class="form-group floating-label">
+															{{ base_form.s_union| add_class:'form-control' }}
+														<label for="regular2">1.v. Union</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.village| add_class:'form-control' }}
+														<label for="regular2">1.vi. Village</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.noofvillage| add_class:'form-control' }}
+														<label for="regular2">1.vii. No. of Villages within 1.5Km</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.constructionyear| add_class:'form-control' }}
+														<label for="regular2">1.viii. Construction Year</label>
+													</div>												
+													<div class="form-group floating-label">
+															{{ base_form.acc_cap_per| add_class:'form-control' }}
+														<label for="regular2">1.ix. Accommodation capacity(Person)</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.acc_cap_livestock| add_class:'form-control' }}
+														<label for="regular2">1.ix. Accommodation capacity(Live Stock)</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.plintharea| add_class:'form-control' }}
+														<label for="regular2">1.x. Plinth Area(sft)</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.landarea| add_class:'form-control' }}
+														<label for="regular2">1.xi. Land Area(acre)</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.maletoilet| add_class:'form-control' }}
+														<label for="regular2">1.xii. No. of Toilets(Male)</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.femaletoilet| add_class:'form-control' }}
+														<label for="regular2">1.xii. No. of Toilets(Female)</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.watersupplystatus| add_class:'form-control' }}
+													<label for="regular2">1.xiii. Water Supply Status</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.watersupplysource| add_class:'form-control' }}
+													<label for="regular2">1.xiv. Water Source</label>
+													</div> 
+													<div class="form-group floating-label">
+														{{ base_form.septictank| add_class:'form-control' }}
+													<label for="regular2">1.xv. Septic Tank</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.ramp| add_class:'form-control' }}
+													<label for="regular2">1.xvi. Ramp</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.northing| add_class:'form-control' }}
+													<label for="regular2">2.i. Northing</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.easting| add_class:'form-control' }}
+													<label for="regular2">2.ii. Easting</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.population| add_class:'form-control' }}
+													<label for="regular2">3.i. Population Covered within 1.5Km</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.distance| add_class:'form-control' }}
+													<label for="regular2">3.ii. Distance from UHQ</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.expectedpopulation| add_class:'form-control' }}
+													<label for="regular2">3.iii. Expected Population in 2025 within 1.5km</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.warningsystem| add_class:'form-control' }}
+													<label for="regular2">4. Early Warning System</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.warningsystemdetails| add_class:'form-control' }}
+													<label for="regular2">4. Early Warning System(Give Details)</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.fundingagencies| add_class:'form-control' }}
+													<label for="regular2">5. Funding Agencies of DS</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.existing| add_class:'form-control' }}
+													<label for="regular2">5. Existing</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.underconstruction| add_class:'form-control' }}
+													<label for="regular2">5. Under Construction</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.ground| add_class:'form-control' }}
+													<label for="regular2">6.Ground Floor Use as</label>
+													</div> 
+													<div class="form-group floating-label">
+														{{ base_form.g_others| add_class:'form-control' }}
+													<label for="regular2">6.Ground Floor others Use</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.first| add_class:'form-control' }}
+													<label for="regular2">6.First Floor Use as</label>
+													</div> 
+													<div class="form-group floating-label">
+														{{ base_form.f_ohter| add_class:'form-control' }}
+													<label for="regular2">6.First Floor others Use</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.second| add_class:'form-control' }}
+													<label for="regular2">6.Second Floor Use as</label>
+													</div> 
+													<div class="form-group floating-label">
+														{{ base_form.s_others| add_class:'form-control' }}
+													<label for="regular2">6.Second Floor others Use</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.third| add_class:'form-control' }}
+													<label for="regular2">6.Third Floor Use as</label>
+													</div> 
+													<div class="form-group floating-label">
+														{{ base_form.t_others| add_class:'form-control' }}
+													<label for="regular2">6.Third Floor others Use</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.condition| add_class:'form-control' }}
+													<label for="regular2">7.Condition of DS</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.rs_ground| add_class:'form-control' }}
+													<label for="regular2">8.Ground Floor</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.rs_first| add_class:'form-control' }}
+													<label for="regular2">8.First Floor</label>
+													</div> 
+													<div class="form-group floating-label">
+														{{ base_form.rs_second| add_class:'form-control' }}
+													<label for="regular2">8.Second Floor</label>
+													</div>  
+													<div class="form-group floating-label">
+														{{ base_form.rs_roof| add_class:'form-control' }}
+													<label for="regular2">8.Roof</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.rs_beam| add_class:'form-control' }}
+													<label for="regular2">8.Beam</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.rs_column| add_class:'form-control' }}
+													<label for="regular2">8.Column</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.rs_wall| add_class:'form-control' }}
+													<label for="regular2">8.Wall</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.rs_window| add_class:'form-control' }}
+													<label for="regular2">8.Window</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.rs_door| add_class:'form-control' }}
+													<label for="regular2">8.Door</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.rs_toilet| add_class:'form-control' }}
+													<label for="regular2">8.Toilet</label>
+													</div>   
+													<div class="form-group floating-label">
+														{{ base_form.rs_stair| add_class:'form-control' }}
+													<label for="regular2">8.Stair</label>
+													</div> 
+													<div class="form-group floating-label">
+														{{ base_form.rs_ramp| add_class:'form-control' }}
+													<label for="regular2">8.Ramp</label>
+													</div>   
+													<div class="form-group floating-label">
+														{{ base_form.rs_others| add_class:'form-control' }}
+													<label for="regular2">8.Others</label>
+													</div>  
+													<div class="form-group floating-label">
+														{{ base_form.rs_ifothersfillup| add_class:'form-control' }}
+													<label for="regular2">8.If Others(Specify)</label>
+													</div>
+													
+												</div> <!--first column-->
+												<div class="col-sm-4">
+													
+													<div class="form-group floating-label">
+														{{ base_form.communicationsource| add_class:'form-control' }}
+													<label for="regular2">9.Communication Source</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.cs_others| add_class:'form-control' }}
+													<label for="regular2">9.Communication Source others(Specify)</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.powerstation| add_class:'form-control' }}
+													<label for="regular2">10.Power Supply</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.ps_others| add_class:'form-control' }}
+													<label for="regular2">10.Power Supply others(Specify)</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.waterreservior| add_class:'form-control' }}
+													<label for="regular2">11.Water Reservoir</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.foodstoragesystem| add_class:'form-control' }}
+													<label for="regular2">11.Food Storage System</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.additionaltoilet| add_class:'form-control' }}
+													<label for="regular2">11.Additional Toilet</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.septiktanksoakwell| add_class:'form-control' }}
+													<label for="regular2">11.Septik Tank & Soak Well</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.others| add_class:'form-control' }}
+													<label for="regular2">11.Others Specify</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.polderwashedaway| add_class:'form-control' }}
+													<label for="regular2">C. (Condition of polder) Washed Away</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.polderrepaired| add_class:'form-control' }}
+													<label for="regular2">C. (Condition of polder) Repaired</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.polderneedrepairs| add_class:'form-control' }}
+													<label for="regular2">C. (Condition of polder) Need Repairs</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1from| add_class:'form-control' }}
+													<label for="regular2">C. (Road 1 Details) From</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1to| add_class:'form-control' }}
+													<label for="regular2">C. (Road 1 Details) To</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1name| add_class:'form-control' }}
+													<label for="regular2">C. (Road 1 Details) Name of the Road</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1type| add_class:'form-control' }}
+													<label for="regular2">C. (Road 1 Details)Road Type </label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1id| add_class:'form-control' }}
+													<label for="regular2">C. (Road 1 Details) Road ID</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1length| add_class:'form-control' }}
+													<label for="regular2">C. (Road 1 Details) Length</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1pavement| add_class:'form-control' }}
+													<label for="regular2">C. (Road 1 Details) Width of Pavement</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1embankment| add_class:'form-control' }}
+													<label for="regular2">C. (Road 1 Details) Embankment</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1kachcha| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 1) Kachcha</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1bc| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 1) BC</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1other| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 1) Others(Specify)</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1surfacing| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 1) Surfacing</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1basecourse| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 1) Base-course</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1sbase| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 1) S-Base</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1roadcovered| add_class:'form-control' }}
+													<label for="regular2">C. (Potholes Road 1) % Road Covered</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road1avgdepth| add_class:'form-control' }}
+													<label for="regular2">C. (Potholes Road 1) Average depth</label>
+													</div>
+
+													<div class="form-group floating-label">
+														{{ base_form.road2from| add_class:'form-control' }}
+													<label for="regular2">C. (Road 2 Details) From</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2to| add_class:'form-control' }}
+													<label for="regular2">C. (Road 2 Details) To</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2name| add_class:'form-control' }}
+													<label for="regular2">C. (Road 2 Details) Name of the Road</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2type| add_class:'form-control' }}
+													<label for="regular2">C. (Road 2 Details)Road Type </label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2id| add_class:'form-control' }}
+													<label for="regular2">C. (Road 2 Details) Road ID</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2length| add_class:'form-control' }}
+													<label for="regular2">C. (Road 2 Details) Length</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2pavement| add_class:'form-control' }}
+													<label for="regular2">C. (Road 2 Details) Width of Pavement</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2embankment| add_class:'form-control' }}
+													<label for="regular2">C. (Road 2 Details) Embankment</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2kachcha| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 2) Kachcha</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2bc| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 2) BC</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2other| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 2) Others(Specify)</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2surfacing| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 2) Surfacing</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2basecourse| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 2) Base-course</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2sbase| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 2) S-Base</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2roadcovered| add_class:'form-control' }}
+													<label for="regular2">C. (Potholes Road 2) % Road Covered</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road2avgdepth| add_class:'form-control' }}
+													<label for="regular2">C. (Potholes Road 2) Average depth</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3from| add_class:'form-control' }}
+													<label for="regular2">C. (Road 3 Details) From</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3to| add_class:'form-control' }}
+													<label for="regular2">C. (Road 3 Details) To</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3name| add_class:'form-control' }}
+													<label for="regular2">C. (Road 3 Details) Name of the Road</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3type| add_class:'form-control' }}
+													<label for="regular2">C. (Road 3 Details)Road Type </label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3id| add_class:'form-control' }}
+													<label for="regular2">C. (Road 3 Details) Road ID</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3length| add_class:'form-control' }}
+													<label for="regular2">C. (Road 3 Details) Length</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3pavement| add_class:'form-control' }}
+													<label for="regular2">C. (Road 3 Details) Width of Pavement</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3embankment| add_class:'form-control' }}
+													<label for="regular2">C. (Road 3 Details) Embankment</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3kachcha| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 3) Kachcha</label>
+													</div>
+													
+													
+
+
+												</div> <!--Second Column-->
+
+
+												<div class="col-sm-4">	
+													<div class="form-group floating-label">
+														{{ base_form.road3bc| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 3) BC</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3other| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 3) Others(Specify)</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3surfacing| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 3) Surfacing</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3basecourse| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 3) Base-course</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3sbase| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 3) S-Base</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3roadcovered| add_class:'form-control' }}
+													<label for="regular2">C. (Potholes Road 3) % Road Covered</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road3avgdepth| add_class:'form-control' }}
+													<label for="regular2">C. (Potholes Road 3) Average depth</label>
+													</div>						
+
+													<div class="form-group floating-label">
+														{{ base_form.road4from| add_class:'form-control' }}
+													<label for="regular2">C. (Road 4 Details) From</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4to| add_class:'form-control' }}
+													<label for="regular2">C. (Road 4 Details) To</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4name| add_class:'form-control' }}
+													<label for="regular2">C. (Road 4 Details) Name of the Road</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4type| add_class:'form-control' }}
+													<label for="regular2">C. (Road 4 Details)Road Type </label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4id| add_class:'form-control' }}
+													<label for="regular2">C. (Road 4 Details) Road ID</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4length| add_class:'form-control' }}
+													<label for="regular2">C. (Road 4 Details) Length</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4pavement| add_class:'form-control' }}
+													<label for="regular2">C. (Road 4 Details) Width of Pavement</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4embankment| add_class:'form-control' }}
+													<label for="regular2">C. (Road 4 Details) Embankment</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4kachcha| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 4) Kachcha</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4bc| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 4) BC</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4other| add_class:'form-control' }}
+													<label for="regular2">C. (Surfacing type Road 4) Others(Specify)</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4surfacing| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 4) Surfacing</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4basecourse| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 4) Base-course</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4sbase| add_class:'form-control' }}
+													<label for="regular2">C. (Thickness Road 4) S-Base</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4roadcovered| add_class:'form-control' }}
+													<label for="regular2">C. (Potholes Road 4) % Road Covered</label>
+													</div>
+													<div class="form-group floating-label">
+														{{ base_form.road4avgdepth| add_class:'form-control' }}
+													<label for="regular2">C. (Potholes Road 4) Average depth</label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e1_a| add_class:'form-control' }}
+														<label for="regular2">E1. YES / NO </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e1_b| add_class:'form-control' }}
+														<label for="regular2">E1. Scale of Impact (H/M/L) </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e1_c| add_class:'form-control' }}
+														<label for="regular2">E1. Remark / Answer </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e2_a| add_class:'form-control' }}
+														<label for="regular2">E2. YES / NO </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e2_b| add_class:'form-control' }}
+														<label for="regular2">E2. Scale of Impact (H/M/L) </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e2_c| add_class:'form-control' }}
+														<label for="regular2">E2. Remark / Answer </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e3_a| add_class:'form-control' }}
+														<label for="regular2">E3. YES / NO </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e3_b| add_class:'form-control' }}
+														<label for="regular2">E3. Scale of Impact (H/M/L) </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e3_c| add_class:'form-control' }}
+														<label for="regular2">E3. Remark / Answer </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e4_a| add_class:'form-control' }}
+														<label for="regular2">E4. YES / NO </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e4_b| add_class:'form-control' }}
+														<label for="regular2">E4. Scale of Impact (H/M/L) </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e4_c| add_class:'form-control' }}
+														<label for="regular2">E4. Remark / Answer </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e5_a| add_class:'form-control' }}
+														<label for="regular2">E5. YES / NO </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e5_b| add_class:'form-control' }}
+														<label for="regular2">E5. Scale of Impact (H/M/L) </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e5_c| add_class:'form-control' }}
+														<label for="regular2">E5. Remark / Answer </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e6_a| add_class:'form-control' }}
+														<label for="regular2">E6. YES / NO </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e6_b| add_class:'form-control' }}
+														<label for="regular2">E6. Scale of Impact (H/M/L) </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e6_c| add_class:'form-control' }}
+														<label for="regular2">E6. Remark / Answer </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e7_a| add_class:'form-control' }}
+														<label for="regular2">E7. YES / NO </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e7_b| add_class:'form-control' }}
+														<label for="regular2">E7. Scale of Impact (H/M/L) </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e7_c| add_class:'form-control' }}
+														<label for="regular2">E7. Remark / Answer </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e8_a| add_class:'form-control' }}
+														<label for="regular2">E8. YES / NO </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e8_b| add_class:'form-control' }}
+														<label for="regular2">E8. Scale of Impact (H/M/L) </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e8_c| add_class:'form-control' }}
+														<label for="regular2">E8. Remark / Answer </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e9_a| add_class:'form-control' }}
+														<label for="regular2">E9. YES / NO </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e9_b| add_class:'form-control' }}
+														<label for="regular2">E9. Scale of Impact (H/M/L) </label>
+													</div>
+													<div class="form-group floating-label">
+															{{ base_form.e9_c| add_class:'form-control' }}
+														<label for="regular2">E9. Remark / Answer </label>
+													</div>												
+													<div class="form-group floating-label">
+														{{ base_form.updated_by | add_class:'form-control select2-list'}}
+														<label for="textarea2">Updated By</label>
+												   </div>
+													
+												</div> <!--Third Column-->
+													
+
+
+												</div>
+												
+												<div class="col-md-12">
+													<hr>
+													<div class="card-actionbar-row">
+														<input type="submit" class="btn btn-flat btn-primary ink-reaction" value="SUBMIT">
+													</div>
+												</div>
+											</div>
+										</form>
+									</div><!--end .card-body -->
+								</div><!--end .card -->
+							</div><!--end .col -->
+							<!-- END FORM - TIME ON SITE -->
+
+						</div><!--end .row -->
+					</div><!--end .section-body -->
+				</section>
+
+{% endblock %}

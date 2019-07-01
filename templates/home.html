@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %} 
+<h1> Welcome {% if user.is_authenticated %} {{user.username}} {% else %} visitor! {% endif %} . Click Main Menu.</h1>
+{% else %}
+<h1> Welcome {% if user.is_authenticated %} {{user.username}} {% else %} visitor! {% endif %} . Click Login.</h1>
+{% endif %}
+{% endblock %}

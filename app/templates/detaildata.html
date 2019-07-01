@@ -1,0 +1,495 @@
+{% extends 'layout.html' %}
+ 
+{% load widget_tweaks %}
+
+{% load filters %}
+
+{% block title %} All Servey Data (Detail Form){% endblock %}
+
+{% block body %}
+                <section>
+                    <div class="section-body">
+                        <!-- BEGIN DATATABLE 2 -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-head style-primary">
+                                        <header>All Survey Data (Detail Form)</header>
+                                        <div class="tools">
+                                            <a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
+                                            <a class="btn btn-icon-toggle btn-close"><i class="md md-close"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+
+                                            <div class="row">
+                                                    <div style="width: 50%; float:left">
+                                                          
+                                                            <div style="width: 50%; float:left">
+                                                                 <!---- Search ---->
+                                                                <form  method="GET" action="{% url 'detaildata' %}">
+                                                                        <div class="col-lg-5">
+                                                                            {% if dis %} 
+                                                                            <input type="text" name='d' class="form-control"  value="{{dis}}" placeholder="District">
+                                                                            {% else %}
+                                                                            <input type="text" name='d' class="form-control"  placeholder="District">
+                                                                            {% endif %}
+                                                                        </div>   
+                                                                        <label class="col-lg-2">
+                                                                                <button type="submit" class="btn btn-success" >Search</button>
+            
+                                                                        </label>                                                            
+                                                                </form>
+                                                               <!---- Search ---->
+                                                           
+                                                            </div>
+                    
+                                                            <div style="width: 50%; float:right">
+                                                                
+                                                                <!---- Search ---->
+                                                                <form  method="GET" action="{% url 'detaildata' %}">
+                                                                        <div class="col-lg-5">
+                                                                            {% if upz %} 
+                                                                            <input type="text" name='up' class="form-control"  value="{{upz}}" placeholder="Upazilla">
+                                                                            {% else %}
+                                                                            <input type="text" name='up' class="form-control"  placeholder="Upazilla">
+                                                                            {% endif %}
+                                                                        </div>   
+                                                                        <label class="col-lg-2">
+                                                                                <button type="submit" class="btn btn-success" >Search</button>
+            
+                                                                        </label>                                                            
+                                                                </form>
+                                                               <!---- Search ---->
+                                                                    
+                                                                                                                              
+                                                            </div>
+                                                           
+                                                    </div>
+        
+                                                    <div style="width: 50%; float:right">
+                                                        
+                                                            <div style="width: 50%; float:left">
+                                                            
+                                                                <!---- Search ---->
+                                                                <form  method="GET" action="{% url 'detaildata' %}">
+                                                                        <div class="col-lg-5">
+                                                                            {% if uni %} 
+                                                                            <input type="text" name='un' class="form-control"  value="{{uni}}" placeholder="Union">
+                                                                            {% else %}
+                                                                            <input type="text" name='un' class="form-control"  placeholder="Union">
+                                                                            {% endif %}
+                                                                        </div>   
+                                                                        <label class="col-lg-2">
+                                                                                <button type="submit" class="btn btn-success" >Search</button>
+            
+                                                                        </label>                                                            
+                                                                </form>
+                                                               <!---- Search ---->
+                                                           
+                                                            </div>
+                        
+                                                            <div style="width: 50%; float:right">
+                                                                
+                                                                <!---- Search ---->
+                                                                <form  method="GET" action="{% url 'detaildata' %}">
+                                                                        <div class="col-lg-5">
+                                                                            {% if moz %} 
+                                                                            <input type="text" name='m' class="form-control"  value="{{moz}}" placeholder="Mouza">
+                                                                            {% else %}
+                                                                            <input type="text" name='m' class="form-control"  placeholder="Mouza">
+                                                                            {% endif %}
+                                                                        </div>   
+                                                                        <label class="col-lg-2">
+                                                                                <button type="submit" class="btn btn-success" >Search</button>
+            
+                                                                        </label>                                                            
+                                                                </form>
+                                                               <!---- Search ---->
+                                                                        
+                                                                                                                                  
+                                                            </div>
+                                                        
+                                                                                                                  
+                                                    </div>    
+        
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div style="width: 70%; float:left">
+                                                    
+                                                </div>
+
+                                                <div style="width: 30%; float: right;">
+
+                                                        <div style="width: 50%; float:left">
+                                                                <form  method="GET" action="{% url 'shortdata' %}">
+                                                                    <label class="col-lg-2">
+                                                                        <button type="submit" class="btn btn-warning" style="width: 150px;" >View Short Data</button>
+                                                                    </label>     
+                                                                </form> 
+                                                            </div>
+                                                            <div style="width: 50%; float:right">
+                                                                <form  method="GET" action="{% url 'mapview' %}">
+                                                                    <label class="col-lg-2">
+                                                                        <button type="submit" class="btn btn-danger" style="width: 100px;">Map View</button>
+                                                                    </label>  
+                                                                </form>                                                      
+                                                            </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        <br>
+
+
+                                        <!--Table-->
+                                        <div class="row">
+                                            <div style="overflow-x:auto;" class="table-responsive">
+                                                <table  id="datatable2" class="table table-bordered sortable table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>                                         
+                                                            <th>Unique ID</th>
+                                                            <th>School ID</th> 
+                                                            <th>District</th> 
+                                                            <th>Upazila</th>
+                                                            <th>Union</th>                                                                                                              
+                                                            <th>Mouza</th>
+                                                            <th>Village</th>
+                                                            <th>Shelter Name</th>
+                                                            <th>Construction Year</th>
+                                                            <th>Northing</th>
+                                                            <th>Easting</th>
+                                                            <th>Funding Agencies</th>
+                                                            <th>Sheleter Uses as</th>
+                                                            <th>Shelter Condition</th>
+                                                            <th>No. of Village</th>
+                                                            <th>Accommodation capacity (person)</th>
+                                                            <th>Accommodation capacity (Live Stock)</th>
+                                                            <th>Plinth Area</th>
+                                                            <th>Land Area</th>
+                                                            <th>Male Toilet</th>
+                                                            <th>Female Toilet</th>
+                                                            <th>Water supply status</th>
+                                                            <th>Water Supply source</th>
+                                                            <th>Septic Tank</th>
+                                                            <th>Ramp</th>
+                                                            <th>Population(Present)</th>
+                                                            <th>Population(2025)</th>
+                                                            <th>UHQ distance</th>
+                                                            <th>Warning System</th>
+                                                            <th>Warning System Details</th>
+                                                            <th>Existing</th>                                                            
+                                                            <th>Under Construction</th>
+                                                            <th>Ground Floor Uses</th>
+                                                            <th>Ground Floor Others Uses</th>
+                                                            <th>1st Floor Uses</th>
+                                                            <th>1st Floor Other Uses</th>
+                                                            <th>2nd Floor Uses</th>
+                                                            <th>2nd Floor Other Uses</th>
+                                                            <th>3rd Floor Uses</th>
+                                                            <th>3rd Floor Other Uses</th>
+                                                            <th>Repair Status Ground Floor</th>
+                                                            <th>Repair Status 1st Floor</th>
+                                                            <th>Repair Status 2nd Floor</th>
+                                                            <th>Repair Status Roof Floor</th>
+                                                            <th>Repair Status Beam</th>
+                                                            <th>Repair Status Column</th>
+                                                            <th>Repair Status Wall</th>
+                                                            <th>Repair Status Window</th>
+                                                            <th>Repair Status Door</th>
+                                                            <th>Repair Status Toilet</th>
+                                                            <th>Repair Status Stair</th>
+                                                            <th>Repair Status Ramp</th>
+                                                            <th>Repair Status Others</th>
+                                                            <th>Repair Status (if others)</th>
+                                                            <th>Communication Source</th>
+                                                            <th>Communication Source Others</th>
+                                                            <th>Power Station</th>
+                                                            <th>Power Station Others</th>
+                                                            <th>Water Reservior</th>
+                                                            <th>Food Storage System></th>
+                                                            <th>Additional Toilet</th>
+                                                            <th>Septik Tanks & Soak Well</th>
+                                                            <th>Ohters</th>
+                                                            <th>Polder Washed Away</th>
+                                                            <th>Polder Repaired</th>
+                                                            <th>Polder need repairs</th>
+                                                            <th>Road1 From</th>
+                                                            <th>Road1 To</th>
+                                                            <th>Road1 Name</th>
+                                                            <th>Road1 Type</th>
+                                                            <th>Road1 ID</th>
+                                                            <th>Road1 Length</th>
+                                                            <th>Road1 width of pavement</th>
+                                                            <th>Road1 Width of embankment</th>
+                                                            <th>Road1 kachcha</th>
+                                                            <th>Road1 BC</th>
+                                                            <th>Road1 others(specify)</th>
+                                                            <th>Road1 Surfacing</th>
+                                                            <th>Road1 Base-course</th>
+                                                            <th>Road1 S-Base</th>
+                                                            <th>Road1 % road covered</th>
+                                                            <th>Road1 average depth</th>
+                                                            <th>Road2 From</th>
+                                                            <th>Road2 To</th>
+                                                            <th>Road2 Name</th>
+                                                            <th>Road2 Type</th>
+                                                            <th>Road2 ID</th>
+                                                            <th>Road2 Length</th>
+                                                            <th>Road2 width of pavement</th>
+                                                            <th>Road2 Width of embankment</th>
+                                                            <th>Road2 kachcha</th>
+                                                            <th>Road2 BC</th>
+                                                            <th>Road2 others(specify)</th>
+                                                            <th>Road2 Surfacing</th>
+                                                            <th>Road2 Base-course</th>
+                                                            <th>Road2 S-Base</th>
+                                                            <th>Road2 % road covered</th>
+                                                            <th>Road2 average depth</th>
+                                                            <th>Road3 From</th>
+                                                            <th>Road3 To</th>
+                                                            <th>Road3 Name</th>
+                                                            <th>Road3 Type</th>
+                                                            <th>Road3 ID</th>
+                                                            <th>Road3 Length</th>
+                                                            <th>Road3 width of pavement</th>
+                                                            <th>Road3 Width of embankment</th>
+                                                            <th>Road3 kachcha</th>
+                                                            <th>Road3 BC</th>
+                                                            <th>Road3 others(specify)</th>
+                                                            <th>Road3 Surfacing</th>
+                                                            <th>Road3 Base-course</th>
+                                                            <th>Road3 S-Base</th>
+                                                            <th>Road3 % road covered</th>
+                                                            <th>Road3 average depth</th>
+                                                            <th>Road4 From</th>
+                                                            <th>Road4 To</th>
+                                                            <th>Road4 Name</th>
+                                                            <th>Road4 Type</th>
+                                                            <th>Road4 ID</th>
+                                                            <th>Road4 Length</th>
+                                                            <th>Road4 width of pavement</th>
+                                                            <th>Road4 Width of embankment</th>
+                                                            <th>Road4 kachcha</th>
+                                                            <th>Road4 BC</th>
+                                                            <th>Road4 others(specify)</th>
+                                                            <th>Road4 Surfacing</th>
+                                                            <th>Road4 Base-course</th>
+                                                            <th>Road4 S-Base</th>
+                                                            <th>Road4 % road covered</th>
+                                                            <th>Road4 average depth</th>
+                                                            <th>E1_a</th>
+                                                            <th>E1_b</th>
+                                                            <th>E1_c</th>
+                                                            <th>E2_a</th>
+                                                            <th>E2_b</th>
+                                                            <th>E2_c</th>
+                                                            <th>E3_a</th>
+                                                            <th>E3_b</th>
+                                                            <th>E3_c</th>
+                                                            <th>E4_a</th>
+                                                            <th>E4_b</th>
+                                                            <th>E4_c</th>
+                                                            <th>E5_a</th>
+                                                            <th>E5_b</th>
+                                                            <th>E5_c</th>
+                                                            <th>E6_a</th>
+                                                            <th>E6_b</th>
+                                                            <th>E6_c</th>
+                                                            <th>E7_a</th>
+                                                            <th>E7_b</th>
+                                                            <th>E7_c</th>
+                                                            <th>E8_a</th>
+                                                            <th>E8_b</th>
+                                                            <th>E8_c</th>
+                                                            <th>E9_a</th>
+                                                            <th>E9_b</th>
+                                                            <th>E9_c</th>                                                         
+                                                            <th width=20px>Action</th>     
+                                                                                                    
+                                                        </tr>
+                                                    </thead>
+                    
+                                                <tbody>
+                                                    {% for ddata in Ddata %}
+                                                    
+                                                        <tr class="gradeX">
+                                                            <td>{{ddata.id}}</td>
+                                                            <td>{{ddata.uniqueid}}</td>
+                                                            <td>{{ddata.schoolid|pointzero}}</td>
+                                                            <td>{{ddata.district}}</td>  
+                                                            <td>{{ddata.upazilla}}</td> 
+                                                            <td>{{ddata.s_union}}</td>                                                                                                                                                                                                                                           
+                                                            <td>{{ddata.mouza}}</td> 
+                                                            <td>{{ddata.village}}</td> 
+                                                            <td>{{ddata.sheltername}}</td>
+                                                            <td>{{ddata.constructionyear|pointzero}}</td>
+                                                            <td>{{ddata.northing}}</td>
+                                                            <td>{{ddata.easting}}</td>
+                                                            <td>{{ddata.fundingagencies}}</td>
+                                                            <td>{{ddata.usesas}}</td>
+                                                            <td>{{ddata.condition}}</td>
+                                                            <td>{{ddata.noofvillage|pointzero}}</td>
+                                                            <td>{{ddata.acc_cap_per|pointzero}}</td>
+                                                            <td>{{ddata.acc_cap_livestock|pointzero}}</td>
+                                                            <td>{{ddata.plintharea}}</td>
+                                                            <td>{{ddata.landarea}}</td>
+                                                            <td>{{ddata.maletoilet|pointzero}}</td>
+                                                            <td>{{ddata.femaletoilet|pointzero}}</td>
+                                                            <td>{{ddata.watersupplystatus|yesno}}</td>
+                                                            <td>{{ddata.watersupplysource}}</td>
+                                                            <td>{{ddata.septictank|yesno}}</td>
+                                                            <td>{{ddata.ramp|yesno}}</td>                                                            
+                                                            <td>{{ddata.population|pointzero}}</td>
+                                                            <td>{{ddata.expectedpopulation|pointzero}}</td>
+                                                            <td>{{ddata.distance}}</td>
+                                                            <td>{{ddata.warningsystem|yesno}}</td>
+                                                            <td>{{ddata.warningsystemdetails}}</td>
+                                                            <td>{{ddata.existing|yesno}}</td>
+                                                            <td>{{ddata.underconstruction|yesno}}</td>
+                                                            <td>{{ddata.ground}}</td>
+                                                            <td>{{ddata.g_others}}</td>
+                                                            <td>{{ddata.first}}</td>
+                                                            <td>{{ddata.f_other}}</td>
+                                                            <td>{{ddata.second}}</td>
+                                                            <td>{{ddata.s_others}}</td>
+                                                            <td>{{ddata.third}}</td>
+                                                            <td>{{ddata.t_others}}</td>
+                                                            <td>{{ddata.rs_ground|rs}}</td>
+                                                            <td>{{ddata.rs_first|rs}}</td>
+                                                            <td>{{ddata.rs_second|rs}}</td>
+                                                            <td>{{ddata.rs_roof|rs}}</td>
+                                                            <td>{{ddata.rs_beam|rs}}</td>
+                                                            <td>{{ddata.rs_column|rs}}</td>
+                                                            <td>{{ddata.rs_wall|rs}}</td>
+                                                            <td>{{ddata.rs_window|rs}}</td>
+                                                            <td>{{ddata.rs_door|rs}}</td>
+                                                            <td>{{ddata.rs_toilet|rs}}</td>
+                                                            <td>{{ddata.rs_stair|rs}}</td>
+                                                            <td>{{ddata.rs_ramp|rs}}</td>
+                                                            <td>{{ddata.rs_others|rs}}</td>
+                                                            <td>{{ddata.rs_ifothersfillup|rs}}</td>
+                                                            <td>{{ddata.communicationsource}}</td>
+                                                            <td>{{ddata.cs_others}}</td>
+                                                            <td>{{ddata.powerstation}}</td>
+                                                            <td>{{ddata.ps_others}}</td>
+                                                            <td>{{ddata.waterreservior|yesno}}</td>
+                                                            <td>{{ddata.foodstoragesystem|yesno}}</td>
+                                                            <td>{{ddata.additionaltoilet|yesno}}</td>
+                                                            <td>{{ddata.septicktanksoakwell|yesno}}</td>
+                                                            <td>{{ddata.others}}</td>
+                                                            <td>{{ddata.polderwashedaway}}</td>
+                                                            <td>{{ddata.polderrepaired|yesno}}</td>
+                                                            <td>{{ddata.polderneedrepairs|yesno}}</td>
+                                                            <td>{{ddata.road1from}}</td>
+                                                            <td>{{ddata.road1to}}</td>
+                                                            <td>{{ddata.road1name}}</td>
+                                                            <td>{{ddata.road1type}}</td>
+                                                            <td>{{ddata.road1id}}</td>
+                                                            <td>{{ddata.road1length}}</td>
+                                                            <td>{{ddata.road1pavement}}</td>
+                                                            <td>{{ddata.road1embankment}}</td>
+                                                            <td>{{ddata.road1kachcha}}</td>
+                                                            <td>{{ddata.road1bc}}</td>
+                                                            <td>{{ddata.road1other}}</td>
+                                                            <td>{{ddata.road1surfacing}}</td>
+                                                            <td>{{ddata.road1basecourse}}</td>
+                                                            <td>{{ddata.road1base}}</td>
+                                                            <td>{{ddata.road1roadcovered}}</td>
+                                                            <td>{{ddata.road1avgdepth}}</td>
+                                                            <td>{{ddata.road2from}}</td>
+                                                            <td>{{ddata.road2to}}</td>
+                                                            <td>{{ddata.road2name}}</td>
+                                                            <td>{{ddata.road2type}}</td>
+                                                            <td>{{ddata.road2id}}</td>
+                                                            <td>{{ddata.road2length}}</td>
+                                                            <td>{{ddata.road2pavement}}</td>
+                                                            <td>{{ddata.road2embankment}}</td>
+                                                            <td>{{ddata.road2kachcha}}</td>
+                                                            <td>{{ddata.road2bc}}</td>
+                                                            <td>{{ddata.road2other}}</td>
+                                                            <td>{{ddata.road2surfacing}}</td>
+                                                            <td>{{ddata.road2basecourse}}</td>
+                                                            <td>{{ddata.road2base}}</td>
+                                                            <td>{{ddata.road2roadcovered}}</td>
+                                                            <td>{{ddata.road2avgdepth}}</td>
+                                                            <td>{{ddata.road3from}}</td>
+                                                            <td>{{ddata.road3to}}</td>
+                                                            <td>{{ddata.road3name}}</td>
+                                                            <td>{{ddata.road3type}}</td>
+                                                            <td>{{ddata.road3id}}</td>
+                                                            <td>{{ddata.road3length}}</td>
+                                                            <td>{{ddata.road3pavement}}</td>
+                                                            <td>{{ddata.road3embankment}}</td>
+                                                            <td>{{ddata.road3kachcha}}</td>
+                                                            <td>{{ddata.road3bc}}</td>
+                                                            <td>{{ddata.road3other}}</td>
+                                                            <td>{{ddata.road3surfacing}}</td>
+                                                            <td>{{ddata.road3basecourse}}</td>
+                                                            <td>{{ddata.road3base}}</td>
+                                                            <td>{{ddata.road3roadcovered}}</td>
+                                                            <td>{{ddata.road3avgdepth}}</td>
+                                                            <td>{{ddata.road4from}}</td>
+                                                            <td>{{ddata.road4to}}</td>
+                                                            <td>{{ddata.road4name}}</td>
+                                                            <td>{{ddata.road4type}}</td>
+                                                            <td>{{ddata.road4id}}</td>
+                                                            <td>{{ddata.road4length}}</td>
+                                                            <td>{{ddata.road4pavement}}</td>
+                                                            <td>{{ddata.road4embankment}}</td>
+                                                            <td>{{ddata.road4kachcha}}</td>
+                                                            <td>{{ddata.road4bc}}</td>
+                                                            <td>{{ddata.road4other}}</td>
+                                                            <td>{{ddata.road4surfacing}}</td>
+                                                            <td>{{ddata.road4basecourse}}</td>
+                                                            <td>{{ddata.road4base}}</td>
+                                                            <td>{{ddata.road4roadcovered}}</td>
+                                                            <td>{{ddata.road4avgdepth}}</td>
+                                                            <td>{{ddata.e1_a|yesno}}</td>
+                                                            <td>{{ddata.e1_b|hml}}</td>
+                                                            <td>{{ddata.e1_c}}</td>
+                                                            <td>{{ddata.e2_a|yesno}}</td>
+                                                            <td>{{ddata.e2_b|hml}}</td>
+                                                            <td>{{ddata.e2_c}}</td>
+                                                            <td>{{ddata.e3_a|yesno}}</td>
+                                                            <td>{{ddata.e3_b|hml}}</td>
+                                                            <td>{{ddata.e3_c}}</td>
+                                                            <td>{{ddata.e4_a|yesno}}</td>
+                                                            <td>{{ddata.e4_b|hml}}</td>
+                                                            <td>{{ddata.e4_c}}</td>
+                                                            <td>{{ddata.e15a|yesno}}</td>
+                                                            <td>{{ddata.e5_b|hml}}</td>
+                                                            <td>{{ddata.e5_c}}</td>
+                                                            <td>{{ddata.e6_a|yesno}}</td>
+                                                            <td>{{ddata.e6_b|hml}}</td>
+                                                            <td>{{ddata.e6_c}}</td>
+                                                            <td>{{ddata.e7_a|yesno}}</td>
+                                                            <td>{{ddata.e7_b|hml}}</td>
+                                                            <td>{{ddata.e7_c}}</td>
+                                                            <td>{{ddata.e8_a|yesno}}</td>
+                                                            <td>{{ddata.e8_b|hml}}</td>
+                                                            <td>{{ddata.e8_c}}</td>
+                                                            <td>{{ddata.e9_a|yesno}}</td>
+                                                            <td>{{ddata.e9_b|hml}}</td>
+                                                            <td>{{ddata.e9_c}}</td>
+                                                            
+                                                            <td>                                                                    
+                                                                    <a href="{% url 'editdata' ddata.id %}" class="btn ink-reaction btn-floating-action btn-warning"><i class="md md-edit"></i> </a>                 
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                                
+                                            </table>
+                    
+                                        </div><!--end .table-responsive -->
+                                        </div> <!--end table row-->
+                    {% endblock %}
+                    
+                    
+                    
